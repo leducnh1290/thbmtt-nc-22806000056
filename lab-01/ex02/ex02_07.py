@@ -2,10 +2,10 @@
 print("Nhập thông tin người dùng (Nhập 'done' để kết thúc):")
 line =  []
 while True:
-    line = input()
-    if line.lower() == 'done':
+    user_input = input()
+    if user_input.lower() == 'done':
         break
-    line.append(line)
+    line.append(user_input)
     #Chuyển các dòng thành chữ in hoa và in ra màn hình
-    for i in line:
-        print(i.upper())
+for i in line:
+    print(i.upper())
