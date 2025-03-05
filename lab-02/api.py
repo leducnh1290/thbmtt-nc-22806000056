@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from cipher.caesar import CaesarCipher
 from cipher.vigenere import VigenereCipher
+from cipher.railfence import RailFenceCipher
 app = Flask(__name__) 
 
 caesar_cipher = CaesarCipher();
@@ -32,5 +33,22 @@ def vigenere_decrypt():
     text = data['cipher_text']
     key = data['key']
     return jsonify({'decrypted_text': vigenere_cipher.decrypt_text(text, key)})
+#Railfence
+railfence_cipher = RailFenceCipher()
+@app.route('/api/railfence/encrypt', methods=['POST'])
+def railfence_encrypt():
+    data = request.get_json()
+    text = data['plain_text']
+    key = int(data['key'])
+    return jsonify({'encrypted_text': railfence_cipher.rail_fence_encrypt(text, key)})
+
+@app.route('/api/railfence/decrypt', methods=['POST'])
+def railfence_decrypt():
+    data = request.get_json()
+    text = data['cipher_text']
+    key = int(data['key'])
+    return jsonify({'decrypted_text': railfence_cipher.rail_fence_decrypt(text, key)})
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=5000,debug=True)
