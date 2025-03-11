@@ -7,6 +7,7 @@ def xoa_phan_tu(dic,key):
 # Test
 dic = {'a': 1, 'b': 2, 'c': 3}
 key = 'b'
+print("Dic ban đầu là: ",dic)
 if(xoa_phan_tu(dic,key)):
     print("Phần tử ",key," đã được xoá khỏi Dic. Dic sau khi xoá là ",dic)
 else:
