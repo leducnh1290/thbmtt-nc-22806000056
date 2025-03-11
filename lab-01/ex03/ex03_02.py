@@ -6,4 +6,3 @@ number = list(map(int, lst.split(',')))
 #Đảo ngược danh sách số và in ra kết quả
 reverse_lst = dao_nguoc_list(number)
 print("Danh sách sau khi đảo ngược là: ", reverse_lst)
-r
