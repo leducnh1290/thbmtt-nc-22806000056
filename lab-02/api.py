@@ -7,15 +7,15 @@ from cipher.Transposition import TranspositionCipher
 app = Flask(__name__) 
 #Caesar
 caesar_cipher = CaesarCipher();
-@app.route('/api/ceasar/encrypt', methods=['POST'])
-def ceasar_encrypt():
+@app.route('/api/caesar/encrypt', methods=['POST'])
+def caesar_encrypt():
     data = request.get_json()
     text = data['plain_text']
     key = data['key']
     return jsonify({'encrypted_text': caesar_cipher.encrypt_text(text, key)})
 
-@app.route('/api/ceasar/decrypt', methods=['POST'])
-def ceasar_decrypt():
+@app.route('/api/caesar/decrypt', methods=['POST'])
+def caesar_decrypt():
     data = request.get_json()
     text = data['cipher_text']
     key = data['key']
