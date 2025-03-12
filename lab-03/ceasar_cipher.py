@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
-from ui.ceasar import Ui_MainWindow
+from ui.caesar import Ui_MainWindow
 import requests
 
 class MyApp(QMainWindow):
