@@ -5,6 +5,7 @@ from Crypto.Util.Padding import pad, unpad
 import socket
 import threading
 import hashlib
+import sys
 
 # Initialize client socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -45,7 +46,9 @@ def receive_messages():
     while True:
         encrypted_message = client_socket.recv(1024)
         decrypted_message = decrypt_message(aes_key, encrypted_message)
-        print('Received:', decrypted_message)
+        sys.stdout.write('\nReceived: ' + decrypted_message + '\n')  # In tin nhắn đã nhận
+        sys.stdout.write("Enter message ('exit' to quit): ")  # In lại prompt nhập tin nhắn
+        sys.stdout.flush()
 
 # Start the receiving thread
 receive_thread = threading.Thread(target=receive_messages)
@@ -53,7 +56,9 @@ receive_thread.start()
 
 # Send messages to the server
 while True:
-    message = input("Enter message ('exit' to quit): ")
+    sys.stdout.write("Enter message ('exit' to quit): ")
+    sys.stdout.flush()  # Đảm bảo prompt được in ngay lập tức
+    message = input()  # Nhận đầu vào từ người dùng
     encrypted_message = encrypt_message(aes_key, message)
     client_socket.send(encrypted_message)
     if message == "exit":
